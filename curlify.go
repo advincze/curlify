@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+//DumpToCurl dumps request as curl command for debuugging purposes
 func DumpToCurl(req *http.Request) string {
 	var buffer bytes.Buffer
 	buffer.WriteString("curl")
@@ -18,6 +19,7 @@ func DumpToCurl(req *http.Request) string {
 		if key == "" {
 			continue
 		}
+
 		for _, value := range values {
 			buffer.WriteString(" -H ")
 			buffer.WriteString(`"`)
@@ -26,6 +28,7 @@ func DumpToCurl(req *http.Request) string {
 			buffer.WriteString(value)
 			buffer.WriteString(`"`)
 		}
+
 	}
 
 	buffer.WriteString(" ")
